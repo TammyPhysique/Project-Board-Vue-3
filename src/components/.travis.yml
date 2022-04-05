@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+  - "10"
+  - "9"
+  - "8"
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install
+
+before_script:
+  - npm install -g bundlesize
+
+script:
+  - npm run build
+  - npm run lint
+  - bundlesize
+
+branches:
+  only:
+  - master
